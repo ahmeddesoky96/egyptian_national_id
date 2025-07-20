@@ -120,12 +120,14 @@ All API calls are automatically tracked in the database for billing purposes, in
 Access tracking data via Django admin.
 
 ## Testing
+#### 1. Docker
 
 Run the test:
-```docker
+```bash
 docker-compose run web python -m unittest discover -s id_process/tests
 ```
+#### 1. Virtual Enviroment
 
-```venv
+```bash
 python manage.py test
 ```
