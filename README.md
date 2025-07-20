@@ -28,6 +28,19 @@ Egyptian National IDs are 14-digit numbers
    rename .env.temp to .env
    docker-compose up --build
    ```
+   OR
+   
+2. **Use Virtual Env**
+   ```
+   Active the virtual env before run command ( .\venv\Scripts\activate )
+   Go to main project file ( cd .\national_id )
+    pip install -r requirements.txt
+    python manage.py migrate
+    python manage.py createsuperuser
+    python manage.py runserver
+
+   docker-compose up --build
+   ```
 
 ### Authentication
 
@@ -109,8 +122,10 @@ Access tracking data via Django admin.
 ## Testing
 
 Run the test:
-```bash
+```docker
 docker-compose run web python -m unittest discover -s id_process/tests
 ```
 
-
+```venv
+python manage.py test
+```
