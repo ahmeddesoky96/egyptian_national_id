@@ -34,12 +34,10 @@ Egyptian National IDs are 14-digit numbers
    ```
    Active the virtual env before run command ( .\venv\Scripts\activate )
    Go to main project file ( cd .\national_id )
-    pip install -r requirements.txt
-    python manage.py migrate
-    python manage.py createsuperuser
-    python manage.py runserver
-
-   docker-compose up --build
+   pip install -r requirements.txt
+   python manage.py migrate
+   python manage.py createsuperuser
+   python manage.py runserver
    ```
 
 ### Authentication
