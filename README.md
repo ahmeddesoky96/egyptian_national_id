@@ -12,7 +12,7 @@ A Django REST API service for validating and extracting information from Egyptia
 
 ## Egyptian National ID Format
 
-Egyptian National IDs are 14-digit numbers with the following structure:
+Egyptian National IDs are 14-digit numbers
 
 
 ## Installation & Setup
