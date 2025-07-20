@@ -116,13 +116,9 @@ Access tracking data via Django admin or create custom reports.
 
 ## Testing
 
-Run the test suite:
+Run the test:
 ```bash
-python manage.py test
+docker-compose run web python -m unittest discover -s id_process/tests
 ```
 
-Run specific validator tests:
-```bash
-python -m pytest tests/test_validators.py -v
-```
 
