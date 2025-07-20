@@ -38,9 +38,7 @@ class ValidateNationalIDView(APIView):
         processing_time = int((time.time() - start_time) * 1000) 
         
         response_data = {
-            'is_valid': is_valid,
-            'processing_time_ms': processing_time,
-            'timestamp': timezone.now().isoformat()
+            'is_valid': is_valid
         }
         
         if is_valid:

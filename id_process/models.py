@@ -24,7 +24,7 @@ class APIAuthentication(BaseTrackModel):
         ]
 
     def __str__(self):
-        return f"{self.user}"
+        return f"{self.user.username}"
     
     def save(self, *args, **kwargs):
         if not self.key:

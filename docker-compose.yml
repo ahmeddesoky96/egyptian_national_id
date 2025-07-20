@@ -2,10 +2,14 @@ services:
   web:
     build: .
     container_name: national_id_web
+    command: sh -c "python manage.py collectstatic --noinput && python manage.py migrate"
     volumes:
       - .:/app
-        - static_volume:/app/staticfiles
+      - static_volume:/app/staticfiles
     ports:
       - "8000:8000"
     env_file:
       - .env
+
+volumes:
+  static_volume:

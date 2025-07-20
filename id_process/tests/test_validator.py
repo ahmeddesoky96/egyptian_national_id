@@ -1,7 +1,8 @@
 import unittest
 from id_process.validators import NationalIDValidator
+from django.test import TestCase
 
-class TestNationalIDValidator(unittest.TestCase):
+class TestNationalIDValidator(TestCase):
     
     def test_valid_ids(self):
         valid_ids = [
