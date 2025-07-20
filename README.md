@@ -12,36 +12,44 @@ A Django REST API service for validating and extracting information from Egyptia
 
 ## Egyptian National ID Format
 
-Egyptian National IDs are 14-digit numbers with the following structure:
+Egyptian National IDs are 14-digit numbers
 
 
 ## Installation & Setup
 
 1. **Clone the repository**
    ```
-   git clone <repository-url>
+   git clone git@github.com:ahmeddesoky96/egyptian_national_id.git
    cd national_id 
    ```
 
 2. **Build Image**
    ```
    rename .env.temp to .env
-   docker-compose build
-   docker-compose exec web python manage.py makemigration
-   docker-compose exec web python manage.py migrate
-   docker-compose up
+   docker-compose up --build
+   ```
+   OR
+   
+ **Use Virtual Env**
+   ```
+   Active the virtual env before run command ( .\venv\Scripts\activate )
+   Go to main project file ( cd .\national_id )
+   pip install -r requirements.txt
+   python manage.py migrate
+   python manage.py createsuperuser
+   python manage.py runserver
    ```
 
 ### Authentication
 
-API endpoints require API key authentication. Include your API key in the request headers:
+API endpoints require API key authentication in the request headers:
 
 ```bash
 # Method 1: Authorization header
-Authorization: ApiKey your-api-key-here
+Authorization: ApiKey api-key-here
 (create api key using admin dashboard by create api_auth and after save enter the object again and you will find the key)
 # Method 2: API-Key header
-API-Key: your-api-key-here 
+API-Key: api-key-here 
 (create api key using admin dashboard by create api_auth and after save enter the object again and you will find the key)
 ```
 
@@ -81,8 +89,6 @@ Authorization: ApiKey 1acb25866cfc40c7a6eaa0b1859b1689
         "governorate_name": "Dakahlia",
         "sequential_number": "456"
     },
-    "processing_time_ms": 12,
-    "timestamp": "2025-07-20T15:30:45.123456Z"
 }
 ```
 
@@ -90,9 +96,7 @@ Authorization: ApiKey 1acb25866cfc40c7a6eaa0b1859b1689
 ```json
 {
     "is_valid": false,
-    "errors": ["Invalid birth month"],
-    "processing_time_ms": 8,
-    "timestamp": "2025-07-20T15:30:45.123456Z"
+    "errors": ["Invalid birth month"]
 }
 ```
 
@@ -100,7 +104,6 @@ Authorization: ApiKey 1acb25866cfc40c7a6eaa0b1859b1689
 
 - **Limit**: 10 requests per hour per API key
 - **Response when exceeded**: HTTP 429 Too Many Requests
-- **Reset**: Sliding window (resets hourly)
 
 ## API Call Tracking
 
@@ -112,17 +115,17 @@ All API calls are automatically tracked in the database for billing purposes, in
 - Processing time
 - Client IP and User Agent
 
-Access tracking data via Django admin or create custom reports.
+Access tracking data via Django admin.
 
 ## Testing
+#### 1. Docker
 
-Run the test suite:
+Run the test:
+```bash
+docker-compose run --rm web python manage.py test id_process
+```
+#### 1. Virtual Enviroment
+
 ```bash
 python manage.py test
 ```
-
-Run specific validator tests:
-```bash
-python -m pytest tests/test_validators.py -v
-```
-
