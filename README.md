@@ -122,7 +122,7 @@ Access tracking data via Django admin.
 
 Run the test:
 ```bash
-docker-compose run web python -m unittest discover -s id_process/tests
+docker-compose run --rm web python manage.py test id_process
 ```
 #### 1. Virtual Enviroment
 
