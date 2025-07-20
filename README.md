@@ -30,7 +30,7 @@ Egyptian National IDs are 14-digit numbers
    ```
    OR
    
-2. **Use Virtual Env**
+ **Use Virtual Env**
    ```
    Active the virtual env before run command ( .\venv\Scripts\activate )
    Go to main project file ( cd .\national_id )
