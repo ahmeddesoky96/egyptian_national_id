@@ -26,10 +26,7 @@ Egyptian National IDs are 14-digit numbers with the following structure:
 2. **Build Image**
    ```
    rename .env.temp to .env
-   docker-compose build
-   docker-compose exec web python manage.py makemigration
-   docker-compose exec web python manage.py migrate
-   docker-compose up
+   docker-compose up --build
    ```
 
 ### Authentication
@@ -100,7 +97,7 @@ Authorization: ApiKey 1acb25866cfc40c7a6eaa0b1859b1689
 
 - **Limit**: 10 requests per hour per API key
 - **Response when exceeded**: HTTP 429 Too Many Requests
-- **Reset**: Sliding window (resets hourly)
+- **Reset**: resets hourly
 
 ## API Call Tracking
 
@@ -112,7 +109,7 @@ All API calls are automatically tracked in the database for billing purposes, in
 - Processing time
 - Client IP and User Agent
 
-Access tracking data via Django admin or create custom reports.
+Access tracking data via Django admin.
 
 ## Testing
 
